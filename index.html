@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vardas.js"></script>
+	<script type="text/javascript">
+	function exito(){
+		document.getElementById('datos').innerHTML=vs.Resultado;
+	}
+	function cargando(){
+		document.getElementById('estado').innerHTML='Espere se esta';
+		document.getElementById('datos').innerHTML='cargando....';
+	}
+	function error(valor){
+		document.getElementById('datos').innerHTML='Error de carga ' + valor;
+	}
+	function fin(){
+		document.getElementById('estado').innerHTML='terminado con exito';
+	}
+
+	var vs = new vardas();
+	vs.docListo().Ajax(
+		{	"url":"http://vardas.local/holamundo.php",
+			"metodo":"GET",
+			"fallo":"error",
+			"cargando":"cargando",
+			"exito":"exito",
+			"fin":"fin"
+		},
+		{	"nombre":"david soto"
+
+		});
+	</script>
+</head>
+<body>
+	<p id="estado">dds</p>
+	<p id="datos">dds</p>
+	<img src="http://www.fundecor.org/documentos/cambioclimatico/microcuenca40_swat_2015.jpg" heigth="200" width="200"/>
+</body>
+</html>
